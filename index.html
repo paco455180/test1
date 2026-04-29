@@ -347,8 +347,8 @@ tbody td{color:#1e2d3d}
   margin-left:8px;
   font-size:10px;
   font-weight:600;
-  color:#2a6496;
-  background:rgba(42,100,150,0.08);
+  color:#c0392b;
+  background:rgba(192,57,43,0.07);
   border:1px solid rgba(42,100,150,0.22);
   border-radius:3px;
   padding:1px 5px;
@@ -364,7 +364,7 @@ tbody td{color:#1e2d3d}
 }
 .g-cmp {
   font-size:10px;
-  color:#2a6496;
+  color:#c0392b;
   margin-top:3px;
   font-weight:600;
 }
@@ -429,6 +429,485 @@ h2.sh2 { font-size: 32px !important; }
 /* cover */
 .cs-num   { font-size: clamp(24px, 3vw, 36px) !important; }
 .cs-label { font-size: 13px !important; }
+
+
+/* ════ UPLOAD PANEL ════ */
+#upload-panel {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+}
+#upload-toggle {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  box-shadow: 0 4px 16px rgba(26,39,68,0.35);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s;
+}
+#upload-toggle:hover { transform: scale(1.08); }
+#upload-box {
+  display: none;
+  position: absolute;
+  bottom: 64px; right: 0;
+  width: 340px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(26,39,68,0.22);
+  overflow: hidden;
+}
+#upload-box.open { display: block; }
+.ub-header {
+  background: var(--navy);
+  color: white;
+  padding: 16px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ub-body { padding: 20px; }
+.ub-field { margin-bottom: 14px; }
+.ub-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 5px;
+}
+.ub-field input, .ub-field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--text);
+  box-sizing: border-box;
+}
+.ub-field input[type=file] { padding: 6px; cursor: pointer; }
+.ub-submit {
+  width: 100%;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s;
+}
+.ub-submit:hover { background: var(--steel); }
+.ub-submit:disabled { background: var(--muted); cursor: not-allowed; }
+#upload-status {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+  min-height: 18px;
+}
+.ub-progress {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow: hidden;
+  display: none;
+}
+.ub-progress-bar {
+  height: 100%;
+  background: var(--steel);
+  border-radius: 2px;
+  width: 0%;
+  transition: width .3s;
+}
+.ub-api-row {
+  display: flex; gap: 8px; align-items: flex-end;
+}
+.ub-api-row input { flex: 1; }
+.ub-api-save {
+  padding: 8px 12px;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--navy);
+}
+
+
+/* ════ GLOBAL FONT SCALE UP ════ */
+html { font-size: 18px; }
+body { font-size: 18px !important; line-height: 1.85 !important; }
+
+/* 內文 */
+p, li, td, th, .section p, .callout-items li,
+.prose-3col p, .prose-4col p, .prose-2col p,
+.toc-label, .lof-label { font-size: 16px !important; line-height: 1.9 !important; }
+
+/* 小標籤 */
+.chart-title  { font-size: 14px !important; }
+.chart-sub    { font-size: 13px !important; }
+.bar-label    { font-size: 14px !important; }
+.bar-val      { font-size: 13px !important; }
+.bar-vout     { font-size: 13px !important; }
+.stag         { font-size: 13px !important; }
+nav a         { font-size: 14px !important; }
+
+/* 指標數字 */
+.ind-num      { font-size: clamp(32px, 3.5vw, 44px) !important; }
+.ind-unit     { font-size: 16px !important; }
+.ind-label    { font-size: 15px !important; }
+.g-mini-num   { font-size: clamp(28px, 3vw, 36px) !important; }
+.g-mini-label { font-size: 14px !important; }
+.g-num        { font-size: clamp(44px, 5.5vw, 64px) !important; }
+.g-label      { font-size: 15px !important; }
+.g-pct        { font-size: 15px !important; }
+.cs-num       { font-size: clamp(28px, 3.5vw, 42px) !important; }
+.cs-label     { font-size: 14px !important; }
+
+/* 章節標題 */
+h2.sh2        { font-size: 34px !important; }
+
+/* 表格 */
+table td, table th { font-size: 15px !important; }
+
+/* donut legend */
+.dl-label, .dl-val { font-size: 15px !important; }
+
+/* toc */
+.toc-page-num  { font-size: 15px !important; }
+.toc-section   { padding: 11px 0 !important; }
+
+/* ════ RWD COMPLETE ════ */
+
+/* ── Tablet 以下（≤ 900px）── */
+@media (max-width: 900px) {
+  /* 字體縮小一點，避免擠壓 */
+  body { font-size: 16px !important; }
+  p, li, td, th { font-size: 15px !important; }
+  .bar-label { font-size: 13px !important; }
+  h2.sh2 { font-size: 26px !important; }
+  .sh2-block { padding: 18px 24px 16px !important; }
+  .section { padding: 48px 24px !important; min-height: auto !important; }
+
+  /* 多欄 → 單欄 */
+  .prose-3col, .prose-4col { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .prose-2col { grid-template-columns: 1fr !important; }
+  .two-col    { grid-template-columns: 1fr !important; }
+  .three-col  { grid-template-columns: 1fr !important; }
+
+  /* TOC */
+  .toc-grid { grid-template-columns: 1fr !important; }
+
+  /* nav 可橫捲 */
+  nav { overflow-x: auto; white-space: nowrap; }
+  nav a { font-size: 13px !important; padding: 18px 10px !important; }
+
+  /* glance */
+  .glance-grid { grid-template-columns: 1fr 1fr !important; }
+  .glance-row  { grid-template-columns: 1fr 1fr !important; }
+
+  /* glance 大數字區塊 */
+  #glance > .section > div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* cover */
+  .cover { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .cover-right { display: none !important; }
+  .cover-left { padding: 48px 28px 60px !important; }
+  .cover-stats { grid-template-columns: 1fr 1fr !important; }
+
+  /* indicators */
+  .ind-grid { grid-template-columns: 1fr 1fr !important; }
+
+  /* map controls */
+  .map-controls-grid { grid-template-columns: 1fr 1fr !important; }
+
+  /* footer */
+  footer { grid-template-columns: 1fr !important; padding: 36px 24px !important; }
+
+  /* upload panel */
+  #upload-box { width: 300px !important; right: 0 !important; }
+}
+
+/* ── Mobile（≤ 600px）── */
+@media (max-width: 600px) {
+  body { font-size: 15px !important; }
+  p, li, td, th { font-size: 14px !important; }
+  h2.sh2 { font-size: 22px !important; }
+  .section { padding: 36px 16px !important; }
+  .sh2-block { padding: 16px 20px 14px !important; }
+
+  /* 全部單欄 */
+  .glance-grid  { grid-template-columns: 1fr !important; }
+  .glance-row   { grid-template-columns: 1fr 1fr !important; }
+  .ind-grid     { grid-template-columns: 1fr 1fr !important; }
+  .map-controls-grid { grid-template-columns: 1fr !important; }
+  .toc-grid     { grid-template-columns: 1fr !important; }
+
+  /* glance 大數字 → 2 欄 */
+  #glance > .section > div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* 數字縮小 */
+  .g-num      { font-size: clamp(36px, 10vw, 48px) !important; }
+  .g-mini-num { font-size: clamp(24px, 7vw, 32px) !important; }
+  .cs-num     { font-size: clamp(22px, 7vw, 32px) !important; }
+  .ind-num    { font-size: clamp(26px, 8vw, 36px) !important; }
+
+  /* nav 縮小 */
+  nav a { font-size: 11px !important; padding: 16px 8px !important; }
+
+  /* bar label 縮窄 */
+  .bar-label { width: 80px !important; font-size: 11px !important; }
+  .bar-vout  { min-width: 40px !important; font-size: 11px !important; }
+
+  /* 地圖 */
+  #leaflet-map { height: 300px !important; }
+
+  /* table 橫捲 */
+  .chart-wrap { overflow-x: auto !important; }
+  table { min-width: 500px !important; }
+
+  /* cover */
+  .cover-stats { grid-template-columns: 1fr !important; }
+
+  /* upload panel */
+  #upload-panel { bottom: 16px; right: 16px; }
+  #upload-box { width: calc(100vw - 32px) !important; right: -16px !important; }
+}
+
+
+/* ════ ICON SECTIONS ════ */
+.icon-section { display: flex; flex-direction: column; gap: 32px; }
+.icon-card {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 24px 28px;
+  background: white;
+  border-radius: 4px;
+  border-left: 4px solid var(--steel);
+  box-shadow: 0 2px 8px rgba(26,39,68,.06);
+}
+.icon-card.red   { border-left-color: #c0392b; }
+.icon-card.amber { border-left-color: #d4a017; }
+.icon-card.green { border-left-color: #2e7d52; }
+.icon-card.navy  { border-left-color: var(--navy); background: var(--light); }
+.icon-card-icon {
+  font-size: 36px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 52px;
+  text-align: center;
+}
+.icon-card-body { flex: 1; }
+.icon-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.icon-card-text {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.85;
+  margin: 0;
+}
+.icon-stat-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.icon-stat {
+  background: var(--light);
+  border-radius: 3px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+/* responsive */
+@media (max-width: 600px) {
+  .icon-card { flex-direction: column; gap: 12px; padding: 18px 16px; }
+  .icon-card-icon { width: auto; }
+}
+
+/* ════ FONT SIZE FINAL SCALE ════ */
+html, body { font-size: 20px !important; }
+p, li, .section p, .callout-items li,
+.prose-3col p, .prose-4col p, .prose-2col p { font-size: 17px !important; line-height: 2.0 !important; }
+td, th, table td, table th { font-size: 16px !important; }
+.bar-label   { font-size: 15px !important; }
+.bar-val     { font-size: 14px !important; }
+.bar-vout    { font-size: 14px !important; }
+.chart-title { font-size: 15px !important; font-weight: 700 !important; }
+.chart-sub   { font-size: 14px !important; }
+.stag        { font-size: 13px !important; letter-spacing: .18em !important; }
+nav a        { font-size: 15px !important; }
+.toc-label, .lof-label { font-size: 16px !important; }
+.toc-page-num { font-size: 15px !important; }
+.ind-unit    { font-size: 17px !important; }
+.ind-label   { font-size: 16px !important; }
+.g-label     { font-size: 16px !important; }
+.g-pct       { font-size: 16px !important; }
+.g-mini-label { font-size: 15px !important; }
+.cs-label    { font-size: 15px !important; }
+h2.sh2       { font-size: 36px !important; }
+.dl-label, .dl-val { font-size: 16px !important; }
+.mb-lbl      { font-size: 13px !important; }
+.mb-val      { font-size: 13px !important; }
+
+/* ════ EXTRA RWD BREAKPOINTS ════ */
+
+/* ── Large desktop（> 1400px）── */
+@media (min-width: 1400px) {
+  .section { max-width: 1280px !important; padding: 88px 60px !important; }
+  h2.sh2   { font-size: 40px !important; }
+  p, li    { font-size: 18px !important; }
+}
+
+/* ── Desktop XL（1200–1400px）── */
+@media (max-width: 1400px) and (min-width: 1200px) {
+  .section { padding: 80px 48px !important; }
+}
+
+/* ── Laptop（1000–1200px）── */
+@media (max-width: 1200px) and (min-width: 1001px) {
+  .section { padding: 72px 36px !important; }
+  .prose-4col { grid-template-columns: 1fr 1fr !important; }
+  .glance-grid { grid-template-columns: repeat(3,1fr) !important; }
+}
+
+/* ── Small laptop / large tablet（768–1000px）── */
+@media (max-width: 1000px) and (min-width: 769px) {
+  body { font-size: 17px !important; }
+  p, li, td, th { font-size: 15px !important; }
+  .section { padding: 60px 28px !important; min-height: auto !important; }
+  .prose-3col, .prose-4col { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+  .two-col    { grid-template-columns: 1fr 1fr !important; }
+  .glance-grid { grid-template-columns: repeat(3,1fr) !important; }
+  .glance-row  { grid-template-columns: repeat(2,1fr) !important; }
+  nav a        { font-size: 13px !important; padding: 18px 10px !important; }
+  h2.sh2       { font-size: 30px !important; }
+}
+
+/* ── Tablet（600–768px）── */
+@media (max-width: 768px) and (min-width: 601px) {
+  body { font-size: 16px !important; }
+  p, li, td, th { font-size: 15px !important; }
+  .section { padding: 48px 22px !important; min-height: auto !important; }
+  .prose-3col, .prose-4col { grid-template-columns: 1fr !important; }
+  .two-col, .three-col { grid-template-columns: 1fr !important; }
+  .glance-grid { grid-template-columns: 1fr 1fr !important; }
+  .glance-row  { grid-template-columns: 1fr 1fr !important; }
+  .toc-grid    { grid-template-columns: 1fr !important; }
+  nav a        { font-size: 12px !important; padding: 16px 8px !important; }
+  h2.sh2       { font-size: 26px !important; }
+  .cover-stats { grid-template-columns: 1fr 1fr !important; }
+  .cover-right { display: none !important; }
+  .bar-label   { width: 90px !important; font-size: 12px !important; }
+}
+
+/* ── Large phone（480–600px）── */
+@media (max-width: 600px) and (min-width: 481px) {
+  body { font-size: 15px !important; }
+  p, li, td, th { font-size: 14px !important; }
+  .section { padding: 40px 18px !important; }
+  .glance-grid { grid-template-columns: 1fr 1fr !important; }
+  .glance-row  { grid-template-columns: 1fr 1fr !important; }
+  .ind-grid    { grid-template-columns: 1fr 1fr !important; }
+  h2.sh2       { font-size: 22px !important; }
+  .g-num       { font-size: 42px !important; }
+  nav a        { font-size: 11px !important; padding: 15px 7px !important; }
+  .chart-wrap  { overflow-x: auto !important; }
+  table        { min-width: 480px !important; }
+}
+
+/* ── Small phone（360–480px）── */
+@media (max-width: 480px) and (min-width: 361px) {
+  body { font-size: 14px !important; }
+  p, li { font-size: 14px !important; }
+  .section { padding: 32px 14px !important; }
+  .glance-grid { grid-template-columns: 1fr !important; }
+  .glance-row  { grid-template-columns: 1fr 1fr !important; }
+  .g-num       { font-size: 38px !important; }
+  .g-mini-num  { font-size: 26px !important; }
+  .cs-num      { font-size: 22px !important; }
+  .ind-num     { font-size: 28px !important; }
+  nav { overflow-x: auto !important; white-space: nowrap !important; }
+  nav a { font-size: 11px !important; padding: 14px 7px !important; }
+  h2.sh2 { font-size: 20px !important; }
+  .sh2-block { padding: 14px 16px !important; }
+  .cover-stats { grid-template-columns: 1fr !important; }
+  #upload-box { width: calc(100vw - 28px) !important; right: -14px !important; }
+}
+
+/* ── Tiny phone（< 360px）── */
+@media (max-width: 360px) {
+  body { font-size: 13px !important; }
+  .section { padding: 28px 12px !important; }
+  h2.sh2 { font-size: 18px !important; }
+  nav a  { font-size: 10px !important; padding: 12px 5px !important; }
+  .g-num { font-size: 32px !important; }
+  .glance-grid, .glance-row { grid-template-columns: 1fr !important; }
+}
+
+
+/* ════ FINAL FONT BOOST ════ */
+html, body { font-size: 22px !important; }
+p, li, .section p, .callout-items li,
+.prose-3col p, .prose-4col p, .prose-2col p,
+.icon-card-text { font-size: 19px !important; line-height: 2.1 !important; }
+td, th { font-size: 17px !important; }
+.bar-label  { font-size: 16px !important; }
+.bar-val    { font-size: 15px !important; }
+.bar-vout   { font-size: 15px !important; }
+.chart-title { font-size: 17px !important; }
+.chart-sub   { font-size: 15px !important; }
+nav a        { font-size: 16px !important; }
+.toc-label, .lof-label { font-size: 17px !important; }
+.toc-page-num { font-size: 16px !important; }
+.ind-unit    { font-size: 18px !important; }
+.ind-label   { font-size: 17px !important; }
+.g-label     { font-size: 17px !important; }
+.g-pct       { font-size: 17px !important; }
+.g-mini-label { font-size: 16px !important; }
+.cs-label    { font-size: 16px !important; }
+.dl-label, .dl-val { font-size: 17px !important; }
+.mb-lbl      { font-size: 14px !important; }
+h2.sh2       { font-size: 40px !important; }
+.stag        { font-size: 14px !important; }
+.icon-card-title { font-size: 18px !important; }
+.vstr-cmp    { font-size: 12px !important; }
+.g-cmp       { font-size: 12px !important; }
+
+/* 手機版縮回來 */
+@media (max-width: 768px) {
+  html, body { font-size: 18px !important; }
+  p, li, .icon-card-text { font-size: 16px !important; }
+  td, th { font-size: 15px !important; }
+  h2.sh2 { font-size: 28px !important; }
+  nav a  { font-size: 13px !important; }
+}
+@media (max-width: 480px) {
+  html, body { font-size: 16px !important; }
+  p, li, .icon-card-text { font-size: 15px !important; }
+  h2.sh2 { font-size: 22px !important; }
+  nav a  { font-size: 11px !important; }
+}
 
 </style>
 </head>
@@ -758,9 +1237,60 @@ h2.sh2 { font-size: 32px !important; }
 </div>
 </div></div>
 <div class="sec-divider"></div>
-<div id="fw" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Foreword</div><h2 class="sh2">前言</h2></div><div class="sh2-red-line"></div></div><div class="prose-3col"><p>高雄市創傷登錄系統透過系統性的資料收集與分析，持續監測並改善創傷照護品質。本年報呈現2023年度1,048筆創傷病例之完整資料。</p><p>交通事故為主要傷因（59.7%），老年人口跌倒傷害亦不容忽視（32.9%）。空間分析揭示送醫時效因地理位置而有顯著差異。</p><p>本年報參照澳洲維多利亞州創傷登錄（VSTR）年報架構，感謝所有參與資料收集與審核的醫療及救護人員。</p></div></div></div>
+<div id="fw" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Foreword</div><h2 class="sh2">前言</h2></div><div class="sh2-red-line"></div></div><div class="icon-section">
+  <div class="icon-card">
+    <div class="icon-card-icon">📋</div>
+    <div class="icon-card-body">
+      <div class="icon-card-title">系統目標</div>
+      <p class="icon-card-text">高雄市創傷登錄系統透過系統性的資料收集與分析，持續監測並改善創傷照護品質。本年報呈現2023年度1,048筆創傷病例之完整資料。</p>
+    </div>
+  </div>
+  <div class="icon-card red">
+    <div class="icon-card-icon">🚗</div>
+    <div class="icon-card-body">
+      <div class="icon-card-title">主要發現</div>
+      <p class="icon-card-text">交通事故為主要傷因（59.7%），老年人口跌倒傷害亦不容忽視（32.9%）。空間分析揭示送醫時效因地理位置而有顯著差異。</p>
+    </div>
+  </div>
+  <div class="icon-card green">
+    <div class="icon-card-icon">🌏</div>
+    <div class="icon-card-body">
+      <div class="icon-card-title">國際對標</div>
+      <p class="icon-card-text">本年報參照澳洲維多利亞州創傷登錄（VSTR）年報架構，感謝所有參與資料收集與審核的醫療及救護人員。</p>
+    </div>
+  </div>
+</div></div></div>
 <div class="sec-divider"></div>
-<div id="executive" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Executive Summary</div><h2 class="sh2">執行摘要</h2></div><div class="sh2-red-line"></div></div><div class="prose-4col"><div><div style="color:var(--sky);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--sky);">系統背景</div><p>高雄市緊急創傷救護系統整合消防救護出勤、急診外傷登錄及住院照護資料。2023年共登錄1,048筆創傷病例。</p></div><div><div style="color:var(--red);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--red);">流行病學發現</div><p>車禍佔59.7%，跌倒佔32.9%。60–79歲為主要年齡層（34.3%），女性略多（52.8%），三民區最多（59.7%）。</p></div><div><div style="color:var(--green);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--green);">救護與住院結果</div><p>適當派遣率80.7%；ISS中位數9，手術率66.7%，住院中位數5天，院內死亡率4.9%。</p></div><div><div style="color:var(--amber);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--amber);">GWR空間分析</div><p>送醫時效具強烈空間異質性（R²=0.41）；ISS不具空間聚集（R²=0.013）；住院天數手術效應具中度差異（R²=0.26）。</p></div></div></div></div>
+<div id="executive" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Executive Summary</div><h2 class="sh2">執行摘要</h2></div><div class="sh2-red-line"></div></div><div class="icon-section">
+  <div class="icon-card">
+    <div class="icon-card-icon">🏥</div>
+    <div class="icon-card-body">
+      <div class="icon-card-title">系統背景</div>
+      <p class="icon-card-text">高雄市緊急創傷救護系統整合消防救護出勤、急診外傷登錄及住院照護資料。2023年共登錄1,048筆創傷病例。</p>
+    </div>
+  </div>
+  <div class="icon-card red">
+    <div class="icon-card-icon">📊</div>
+    <div class="icon-card-body">
+      <div class="icon-card-title">流行病學發現</div>
+      <p class="icon-card-text">車禍佔59.7%，跌倒佔32.9%。60–79歲為主要年齡層（34.3%），女性略多（52.8%），三民區最多（59.7%）。</p>
+    </div>
+  </div>
+  <div class="icon-card green">
+    <div class="icon-card-icon">🚑</div>
+    <div class="icon-card-body">
+      <div class="icon-card-title">救護與住院結果</div>
+      <p class="icon-card-text">適當派遣率80.7%；ISS中位數9，手術率66.7%，住院中位數5天，院內死亡率4.9%。<span class="vstr-cmp">LOS 6.8d / death 12.1% — VSTR</span></p>
+    </div>
+  </div>
+  <div class="icon-card amber">
+    <div class="icon-card-icon">🗺️</div>
+    <div class="icon-card-body">
+      <div class="icon-card-title">GWR 空間分析</div>
+      <p class="icon-card-text">送醫時效具強烈空間異質性（R²=0.41）；ISS不具空間聚集（R²=0.013）；住院天數手術效應具中度差異（R²=0.26）。</p>
+    </div>
+  </div>
+</div></div>
 <div class="sec-divider"></div>
 
 <div id="glance" class="sec-bg-white">
@@ -953,7 +1483,7 @@ h2.sh2 { font-size: 32px !important; }
 
 <!-- ══ 06 SEVERITY ══ -->
 <div class="sec-divider"></div>
-<div id="sustained" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Injuries Sustained</div><h2 class="sh2">受傷部位分類</h2></div><div class="sh2-red-line"></div></div><div class="two-col"><div class="chart-wrap"><div class="chart-title">表3：全部患者受傷部位 2023 <span class="chart-sub">Injury Classification</span></div><table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr style="background:var(--navy);color:white;"><th style="padding:9px 14px;text-align:left;font-weight:500;">傷害分類</th><th style="padding:9px 14px;text-align:right;font-weight:500;">例數</th><th style="padding:9px 14px;text-align:right;font-weight:500;">%</th></tr></thead><tbody><tr style="background:var(--light);"><td style="padding:9px 14px;">多發傷（不含嚴重腦外傷）</td><td style="padding:9px 14px;text-align:right;font-weight:600;">430</td><td style="padding:9px 14px;text-align:right;color:var(--muted);">41.0% <span class="vstr-cmp">40.6%</span></td></tr><tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);">頭部合併其他傷害</td><td style="padding:9px 14px;text-align:right;font-weight:600;border-bottom:1px solid var(--border);">221</td><td style="padding:9px 14px;text-align:right;color:var(--muted);border-bottom:1px solid var(--border);">21.1% <span class="vstr-cmp">21.1%</span></td></tr><tr style="background:var(--light);"><td style="padding:9px 14px;">單純頭部傷害</td><td style="padding:9px 14px;text-align:right;font-weight:600;">165</td><td style="padding:9px 14px;text-align:right;color:var(--muted);">15.7% <span class="vstr-cmp">15.7%</span></td></tr><tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);">四肢及/或脊椎傷害</td><td style="padding:9px 14px;text-align:right;font-weight:600;border-bottom:1px solid var(--border);">124</td><td style="padding:9px 14px;text-align:right;color:var(--muted);border-bottom:1px solid var(--border);">11.8% <span class="vstr-cmp">11.8%</span></td></tr><tr style="background:var(--light);"><td style="padding:9px 14px;">胸腹腔傷害</td><td style="padding:9px 14px;text-align:right;font-weight:600;">87</td><td style="padding:9px 14px;text-align:right;color:var(--muted);">8.3% <span class="vstr-cmp">8.3%</span></td></tr><tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);">嚴重脊髓損傷</td><td style="padding:9px 14px;text-align:right;font-weight:600;border-bottom:1px solid var(--border);">21</td><td style="padding:9px 14px;text-align:right;color:var(--muted);border-bottom:1px solid var(--border);">2.0% <span class="vstr-cmp">2.5%</span></td></tr><tr style="background:var(--navy);"><td style="padding:9px 14px;color:white;font-weight:600;">合計</td><td style="padding:9px 14px;text-align:right;font-weight:700;color:white;">1,048</td><td style="padding:9px 14px;text-align:right;color:var(--ice);">100%</td></tr></tbody></table></div><div class="callout" style="margin-top:0;"><ul class="callout-items"><li>多發傷（41%）與澳洲VSTR（40.6%）相近</li><li>頭部相關傷害合計 <strong>36.8%</strong></li><li>燒燙傷 <strong>1.3%</strong>（14例）；穿刺切割傷 <strong>2.1%</strong>（22例）</li></ul></div></div></div></div>
+<div id="sustained" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Injuries Sustained</div><h2 class="sh2">受傷部位分類</h2></div><div class="sh2-red-line"></div></div><div class="two-col"><div class="chart-wrap"><div class="chart-title">表3：全部患者受傷部位 2023 <span class="chart-sub">Injury Classification</span></div><table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr style="background:var(--navy);color:white;"><th style="padding:9px 14px;text-align:left;font-weight:500;">傷害分類</th><th style="padding:9px 14px;text-align:right;font-weight:500;">例數</th><th style="padding:9px 14px;text-align:right;font-weight:500;">%</th></tr></thead><tbody><tr style="background:var(--light);"><td style="padding:9px 14px;">多發傷（不含嚴重腦外傷）</td><td style="padding:9px 14px;text-align:right;font-weight:600;">430</td><td style="padding:9px 14px;text-align:right;color:var(--muted);">41.0% <span class="vstr-cmp">40.6%</span></td></tr><tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);">頭部合併其他傷害</td><td style="padding:9px 14px;text-align:right;font-weight:600;border-bottom:1px solid var(--border);">221</td><td style="padding:9px 14px;text-align:right;color:var(--muted);border-bottom:1px solid var(--border);">21.1% <span class="vstr-cmp">21.1%</span></td></tr><tr style="background:var(--light);"><td style="padding:9px 14px;">單純頭部傷害</td><td style="padding:9px 14px;text-align:right;font-weight:600;">165</td><td style="padding:9px 14px;text-align:right;color:var(--muted);">15.7% <span class="vstr-cmp">15.7%</span></td></tr><tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);">四肢及/或脊椎傷害</td><td style="padding:9px 14px;text-align:right;font-weight:600;border-bottom:1px solid var(--border);">124</td><td style="padding:9px 14px;text-align:right;color:var(--muted);border-bottom:1px solid var(--border);">11.8% <span class="vstr-cmp">11.8%</span></td></tr><tr style="background:var(--light);"><td style="padding:9px 14px;">胸腹腔傷害</td><td style="padding:9px 14px;text-align:right;font-weight:600;">87</td><td style="padding:9px 14px;text-align:right;color:var(--muted);">8.3% <span class="vstr-cmp">8.3%</span></td></tr><tr><td style="padding:9px 14px;border-bottom:1px solid var(--border);">嚴重脊髓損傷</td><td style="padding:9px 14px;text-align:right;font-weight:600;border-bottom:1px solid var(--border);">21</td><td style="padding:9px 14px;text-align:right;color:var(--muted);border-bottom:1px solid var(--border);">2.0% <span class="vstr-cmp">2.5%</span></td></tr><tr style="background:var(--navy);"><td style="padding:9px 14px;color:white;font-weight:600;">合計</td><td style="padding:9px 14px;text-align:right;font-weight:700;color:white;">1,048</td><td style="padding:9px 14px;text-align:right;color:var(--ice);">100%</td></tr></tbody></table></div><div class="callout" style="margin-top:0;"><ul class="callout-items"><li style="list-style:none;">🔗 多發傷（41%）與澳洲VSTR（40.6%）相近</li><li style="list-style:none;">🧠 頭部相關傷害合計 <strong>36.8%</strong></li><li style="list-style:none;">🔥 燒燙傷 <strong>1.3%</strong>（14例）；穿刺切割傷 <strong>2.1%</strong>（22例）</li></ul></div></div></div></div>
 <div class="sec-divider"></div>
 
 <div id="severity" class="sec-bg-white">
@@ -981,7 +1511,7 @@ h2.sh2 { font-size: 32px !important; }
 
 <!-- ══ 07 EMS ══ -->
 <div class="sec-divider"></div>
-<div id="hospital-care" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Hospital & Definitive Care</div><h2 class="sh2">首診醫院與最終照護</h2></div><div class="sh2-red-line"></div></div><div class="glance-row" style="margin-bottom:20px;"><div class="g-mini"><div class="g-mini-num">80.7%</div><div class="g-mini-label">就近適當派遣率</div><div class="g-cmp">74.7% VSTR definitive care</div></div><div class="g-mini"><div class="g-mini-num">12.4%</div><div class="g-mini-label">轉院率</div><div class="g-cmp">28% VSTR transferred</div></div><div class="g-mini"><div class="g-mini-num">8.9%</div><div class="g-mini-label">外傷小組啟動率</div></div></div><div class="callout"><ul class="callout-items"><li>846/1047例送往最適當層級醫療機構，適當派遣率 <strong>80.7%</strong></li><li>130例出院發落為轉院，轉院率 <strong>12.4%</strong></li><li>澳洲VSTR追蹤各醫院層級（MTS/Regional/Primary Care）分布；高雄未來可建立層級分類以利國際比較</li></ul></div></div></div>
+<div id="hospital-care" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Hospital & Definitive Care</div><h2 class="sh2">首診醫院與最終照護</h2></div><div class="sh2-red-line"></div></div><div class="glance-row" style="margin-bottom:20px;"><div class="g-mini"><div class="g-mini-num">80.7%</div><div class="g-mini-label">就近適當派遣率</div><div class="g-cmp">74.7% VSTR definitive care</div></div><div class="g-mini"><div class="g-mini-num">12.4%</div><div class="g-mini-label">轉院率</div><div class="g-cmp">28% VSTR transferred</div></div><div class="g-mini"><div class="g-mini-num">8.9%</div><div class="g-mini-label">外傷小組啟動率</div></div></div><div class="callout"><ul class="callout-items"><li style="list-style:none;">✅ 846/1047例送往最適當層級醫療機構，適當派遣率 <strong>80.7%</strong></li><li style="list-style:none;">🔄 130例出院發落為轉院，轉院率 <strong>12.4%</strong></li><li style="list-style:none;">🌏 澳洲VSTR追蹤各醫院層級（MTS/Regional/Primary Care）分布；高雄未來可建立層級分類以利國際比較</li></ul></div></div></div>
 <div class="sec-divider"></div>
 
 <div id="ems">
@@ -1037,14 +1567,14 @@ h2.sh2 { font-size: 32px !important; }
         <div class="ind-card"><div class="ind-num">8.7</div><div class="ind-unit">天</div><div class="ind-label">住院天數平均值</div></div><div class="g-cmp">— VSTR</div>
       </div>
       <table class="dt">
-        <thead><tr><th>項目</th><th class="nr">高雄 2023</th><th style="color:#2a6496;font-size:10px;">VSTR 2022-23</th></tr></thead>
+        <thead><tr><th>項目</th><th class="nr">高雄 2023</th><th style="color:#c0392b;font-size:10px;">VSTR 2022-23</th></tr></thead>
         <tbody>
-          <tr><td>住院天數中位數</td><td class="nr">5 天</td><td style="font-size:11px;color:#2a6496;font-weight:500;">6.8 天</td></tr>
-          <tr><td>住院天數平均值</td><td class="nr">8.7 天</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td></tr>
-          <tr><td>加護病房天數中位數</td><td class="nr">0 天</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td></tr>
-          <tr><td>手術率</td><td class="nr">66.7%（699例）</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td></tr>
-          <tr><td>外傷小組啟動率</td><td class="nr">8.9%（93例）</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td></tr>
-          <tr><td>住院死亡率</td><td class="nr">4.9%（51例）</td><td style="font-size:11px;color:#2a6496;font-weight:500;">12.1%</td></tr>
+          <tr><td>住院天數中位數</td><td class="nr">5 天</td><td style="font-size:11px;color:#c0392b;font-weight:600;">6.8 天</td></tr>
+          <tr><td>住院天數平均值</td><td class="nr">8.7 天</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td></tr>
+          <tr><td>加護病房天數中位數</td><td class="nr">0 天</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td></tr>
+          <tr><td>手術率</td><td class="nr">66.7%（699例）</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td></tr>
+          <tr><td>外傷小組啟動率</td><td class="nr">8.9%（93例）</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td></tr>
+          <tr><td>住院死亡率</td><td class="nr">4.9%（51例）</td><td style="font-size:11px;color:#c0392b;font-weight:600;">12.1%</td></tr>
         </tbody>
       </table>
     </div>
@@ -1071,17 +1601,17 @@ h2.sh2 { font-size: 32px !important; }
   <div class="chart-wrap">
     <div class="chart-title">系統指標摘要 <span class="chart-sub">Key Performance Indicators</span></div>
     <table class="dt">
-      <thead><tr><th>指標</th><th>類別</th><th class="nr">高雄 2023</th><th style="color:#2a6496;font-size:10px;min-width:80px;">VSTR 2022-23</th><th>說明</th></tr></thead>
+      <thead><tr><th>指標</th><th>類別</th><th class="nr">高雄 2023</th><th style="color:#c0392b;font-size:10px;min-width:80px;">VSTR 2022-23</th><th>說明</th></tr></thead>
       <tbody>
-        <tr><td>院前救護適當派遣率</td><td>院前</td><td class="nr">80.7%</td><td style="font-size:11px;color:#2a6496;font-weight:500;">74.7%</td><td>846/1047 就近適當</td></tr>
-        <tr><td>現場處置時間（6–10分鐘）</td><td>院前</td><td class="nr">54.3%</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td><td>最多案例落於此區間</td></tr>
-        <tr><td>外傷小組啟動率</td><td>院內</td><td class="nr">8.9%</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td><td>93/1048例啟動</td></tr>
-        <tr><td>住院死亡率</td><td>院內</td><td class="nr">4.9%</td><td style="font-size:11px;color:#2a6496;font-weight:500;">12.1%</td><td>51例死亡</td></tr>
-        <tr><td>手術率</td><td>院內</td><td class="nr">66.7%</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td><td>699例接受手術</td></tr>
-        <tr><td>住院天數中位數</td><td>院內</td><td class="nr">5 天</td><td style="font-size:11px;color:#2a6496;font-weight:500;">6.8 天</td><td>平均8.7天</td></tr>
-        <tr><td>危急個案率</td><td>院前/院內</td><td class="nr">10.6%</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td><td>111例判定為危急</td></tr>
-        <tr><td>OHCA率</td><td>院前</td><td class="nr">1.4%</td><td style="font-size:11px;color:#2a6496;font-weight:500;">—</td><td>15例到院前心肺停止</td></tr>
-        <tr><td>重大創傷（ISS≥16）</td><td>院內</td><td class="nr">21.6%</td><td style="font-size:11px;color:#2a6496;font-weight:500;">51% (ISS>12)</td><td>226例（醫院評估）</td></tr>
+        <tr><td>院前救護適當派遣率</td><td>院前</td><td class="nr">80.7%</td><td style="font-size:11px;color:#c0392b;font-weight:600;">74.7%</td><td>846/1047 就近適當</td></tr>
+        <tr><td>現場處置時間（6–10分鐘）</td><td>院前</td><td class="nr">54.3%</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td><td>最多案例落於此區間</td></tr>
+        <tr><td>外傷小組啟動率</td><td>院內</td><td class="nr">8.9%</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td><td>93/1048例啟動</td></tr>
+        <tr><td>住院死亡率</td><td>院內</td><td class="nr">4.9%</td><td style="font-size:11px;color:#c0392b;font-weight:600;">12.1%</td><td>51例死亡</td></tr>
+        <tr><td>手術率</td><td>院內</td><td class="nr">66.7%</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td><td>699例接受手術</td></tr>
+        <tr><td>住院天數中位數</td><td>院內</td><td class="nr">5 天</td><td style="font-size:11px;color:#c0392b;font-weight:600;">6.8 天</td><td>平均8.7天</td></tr>
+        <tr><td>危急個案率</td><td>院前/院內</td><td class="nr">10.6%</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td><td>111例判定為危急</td></tr>
+        <tr><td>OHCA率</td><td>院前</td><td class="nr">1.4%</td><td style="font-size:11px;color:#c0392b;font-weight:600;">—</td><td>15例到院前心肺停止</td></tr>
+        <tr><td>重大創傷（ISS≥16）</td><td>院內</td><td class="nr">21.6%</td><td style="font-size:11px;color:#c0392b;font-weight:600;">51% (ISS>12)</td><td>226例（醫院評估）</td></tr>
       </tbody>
     </table>
   </div>
@@ -1109,7 +1639,7 @@ h2.sh2 { font-size: 32px !important; }
 <div class="sec-divider"></div>
 <div id="longterm" class="sec-bg-white"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Long-term Outcomes</div><h2 class="sh2">長期預後追蹤</h2></div><div class="sh2-red-line"></div></div><div style="background:var(--navy);padding:28px;border-radius:3px;margin-bottom:16px;"><div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:center;"><p style="color:var(--ice);font-size:14px;line-height:1.9;">澳洲VSTR在傷後6、12、24個月進行標準化電話追蹤，收集GOS-E功能恢復評分及EQ-5D-5L生活品質評量。高雄市創傷登錄已建立完整急性期資料，<strong style="color:white;">長期追蹤機制正在規劃建置中</strong>。</p><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:rgba(255,255,255,.08);border-radius:3px;padding:12px;text-align:center;"><div style="font-size:26px;font-weight:700;color:white;">82%</div><div style="color:var(--muted);font-size:12px;">VSTR 6個月追蹤率</div></div><div style="background:rgba(255,255,255,.08);border-radius:3px;padding:12px;text-align:center;"><div style="color:white;font-size:13px;font-weight:600;">6 / 12 / 24 月追蹤</div></div></div></div></div><div class="callout"><ul class="callout-items"><li>GOS-E：VSTR 成人良好恢復機率約37–40%。高雄：<strong>規劃納入未來版本</strong></li><li>EQ-5D-5L：VSTR 傷後12月平均EQ-5D約0.70。高雄：<strong>規劃納入未來版本</strong></li><li>現有出院資料：回家80.3%、轉院12.4%、死亡4.9%、住院中位數5天</li></ul></div></div></div>
 <div class="sec-divider"></div>
-<div id="limitations" style="background:var(--light);"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Limitations</div><h2 class="sh2">限制說明</h2></div><div class="sh2-red-line"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;"><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--red);"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">抽樣涵蓋範圍</div><p style="font-size:13px;color:var(--muted);line-height:1.8;">出勤分隊以三民區為主（59.7%），未能均勻代表全轄區，地理分析需留意抽樣偏差。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--amber);"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">時間測量精度</div><p style="font-size:13px;color:var(--muted);line-height:1.8;">T2→T3以分類區間記錄，GWR係數解讀需考量測量誤差。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--steel);"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">醫院效應</div><p style="font-size:13px;color:var(--muted);line-height:1.8;">住院天數受就醫醫院影響，未能控制醫院層級效應，後續研究應納入固定效應校正。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--green);"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">長期追蹤缺乏</div><p style="font-size:13px;color:var(--muted);line-height:1.8;">尚未建立出院後功能恢復追蹤機制，為與VSTR最主要的差距。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--sky);"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">院前死亡資料</div><p style="font-size:13px;color:var(--muted);line-height:1.8;">本資料為到院患者之登錄，未含到院前死亡及現場死亡案例。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--muted);"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;">GWR統計顯著性</div><p style="font-size:13px;color:var(--muted);line-height:1.8;">本年報GWR呈現局部係數分布，未進行正式統計顯著性檢定。</p></div></div></div></div>
+<div id="limitations" style="background:var(--light);"><div class="section"><div class="section-header"><div class="sh2-block"><div class="stag">Limitations</div><h2 class="sh2">限制說明</h2></div><div class="sh2-red-line"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;"><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--red);"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:24px;line-height:1;">🗺️</span><div style="font-size:14px;font-weight:700;color:var(--navy);">抽樣涵蓋範圍</div></div><p style="font-size:13px;color:var(--muted);line-height:1.8;">出勤分隊以三民區為主（59.7%），未能均勻代表全轄區，地理分析需留意抽樣偏差。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--amber);"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:24px;line-height:1;">⏱</span><div style="font-size:14px;font-weight:700;color:var(--navy);">時間測量精度</div></div><p style="font-size:13px;color:var(--muted);line-height:1.8;">T2→T3以分類區間記錄，GWR係數解讀需考量測量誤差。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--steel);"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:24px;line-height:1;">🏥</span><div style="font-size:14px;font-weight:700;color:var(--navy);">醫院效應</div></div><p style="font-size:13px;color:var(--muted);line-height:1.8;">住院天數受就醫醫院影響，未能控制醫院層級效應，後續研究應納入固定效應校正。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--green);"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:24px;line-height:1;">📅</span><div style="font-size:14px;font-weight:700;color:var(--navy);">長期追蹤缺乏</div></div><p style="font-size:13px;color:var(--muted);line-height:1.8;">尚未建立出院後功能恢復追蹤機制，為與VSTR最主要的差距。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--sky);"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:24px;line-height:1;">🚑</span><div style="font-size:14px;font-weight:700;color:var(--navy);">院前死亡資料</div></div><p style="font-size:13px;color:var(--muted);line-height:1.8;">本資料為到院患者之登錄，未含到院前死亡及現場死亡案例。</p></div><div style="background:white;border-radius:3px;padding:18px;border-left:4px solid var(--muted);"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><span style="font-size:24px;line-height:1;">📈</span><div style="font-size:14px;font-weight:700;color:var(--navy);">GWR統計顯著性</div></div><p style="font-size:13px;color:var(--muted);line-height:1.8;">本年報GWR呈現局部係數分布，未進行正式統計顯著性檢定。</p></div></div></div></div>
 <div class="sec-divider"></div>
 
 <div id="map" class="sec-bg-white">
@@ -1452,5 +1982,214 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 </script>
+
+<!-- ════ UPLOAD PANEL ════ -->
+<div id="upload-panel">
+  <button id="upload-toggle" onclick="toggleUpload()" title="上傳新資料">📊</button>
+  <div id="upload-box">
+    <div class="ub-header">
+      <span>上傳新年度資料</span>
+      <span style="cursor:pointer;font-size:18px;" onclick="toggleUpload()">×</span>
+    </div>
+    <div class="ub-body">
+      <div class="ub-field">
+        <label>API 伺服器位址</label>
+        <div class="ub-api-row">
+          <input type="text" id="api-url" placeholder="https://your-api.onrender.com"
+                 value="">
+          <button class="ub-api-save" onclick="saveApiUrl()">儲存</button>
+        </div>
+      </div>
+      <div class="ub-field">
+        <label>年度</label>
+        <input type="number" id="upload-year" value="2023" min="2020" max="2030">
+      </div>
+      <div class="ub-field">
+        <label>城市</label>
+        <select id="upload-city">
+          <option value="高雄市">高雄市</option>
+          <option value="台南市">台南市</option>
+          <option value="台中市">台中市</option>
+          <option value="台北市">台北市</option>
+        </select>
+      </div>
+      <div class="ub-field">
+        <label>Excel 檔案（.xlsx）</label>
+        <input type="file" id="upload-file" accept=".xlsx,.xls">
+      </div>
+      <button class="ub-submit" id="upload-btn" onclick="uploadData()">開始處理</button>
+      <div id="upload-status">請設定 API 位址並選擇 Excel 檔案</div>
+      <div class="ub-progress"><div class="ub-progress-bar" id="upload-progress"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Upload Panel ──
+function toggleUpload() {
+  const box = document.getElementById('upload-box');
+  box.classList.toggle('open');
+}
+
+function saveApiUrl() {
+  const url = document.getElementById('api-url').value.trim();
+  if (url) {
+    localStorage.setItem('trauma_api_url', url);
+    document.getElementById('upload-status').textContent = '✓ API 位址已儲存';
+  }
+}
+
+// 載入儲存的 API URL
+window.addEventListener('load', () => {
+  const saved = localStorage.getItem('trauma_api_url');
+  if (saved) document.getElementById('api-url').value = saved;
+});
+
+async function uploadData() {
+  const apiUrl = document.getElementById('api-url').value.trim();
+  const file   = document.getElementById('upload-file').files[0];
+  const year   = document.getElementById('upload-year').value;
+  const city   = document.getElementById('upload-city').value;
+  const btn    = document.getElementById('upload-btn');
+  const status = document.getElementById('upload-status');
+  const bar    = document.getElementById('upload-progress');
+
+  if (!apiUrl) { status.textContent = '⚠ 請先設定 API 位址'; return; }
+  if (!file)   { status.textContent = '⚠ 請選擇 Excel 檔案'; return; }
+
+  btn.disabled = true;
+  document.querySelector('.ub-progress').style.display = 'block';
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    // Step 1: 上傳
+    status.textContent = '上傳中...';
+    bar.style.width = '10%';
+
+    const uploadRes = await fetch(`${apiUrl}/upload?year=${year}&city=${encodeURIComponent(city)}`, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (!uploadRes.ok) throw new Error(`上傳失敗：${uploadRes.status}`);
+    const { job_id } = await uploadRes.json();
+    status.textContent = `處理中... (job: ${job_id})`;
+
+    // Step 2: 輪詢狀態
+    await pollStatus(apiUrl, job_id, bar, status);
+
+  } catch (err) {
+    status.textContent = `❌ ${err.message}`;
+    bar.style.width = '0%';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+async function pollStatus(apiUrl, job_id, bar, status) {
+  return new Promise((resolve, reject) => {
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`${apiUrl}/status/${job_id}`);
+        const data = await res.json();
+
+        bar.style.width = data.progress + '%';
+        status.textContent = data.message;
+
+        if (data.status === 'done') {
+          clearInterval(interval);
+          await applyResult(apiUrl, job_id, status);
+          resolve();
+        } else if (data.status === 'error') {
+          clearInterval(interval);
+          status.textContent = `❌ 處理失敗：${data.message}`;
+          reject(new Error(data.message));
+        }
+      } catch (err) {
+        clearInterval(interval);
+        reject(err);
+      }
+    }, 2000);
+  });
+}
+
+async function applyResult(apiUrl, job_id, status) {
+  status.textContent = '載入結果中...';
+
+  const res = await fetch(`${apiUrl}/result/${job_id}`);
+  if (!res.ok) throw new Error('無法取得結果');
+
+  const data = await res.json();
+  updateReport(data);
+
+  status.textContent = `✅ 更新完成！(${data.meta?.year} ${data.meta?.city})`;
+}
+
+function updateReport(data) {
+  const s = data.summary;
+  const c = data.charts;
+
+  // Helper: 更新元素文字
+  const set = (sel, val) => {
+    const el = document.querySelector(sel);
+    if (el) el.textContent = val;
+  };
+
+  // ── 封面統計 ──
+  document.querySelectorAll('.cs-num').forEach((el, i) => {
+    const vals = [
+      s.total_cases?.toLocaleString(),
+      s.surgery_pct + '%',
+      s.dispatch_ok_pct + '%',
+      s.los_mean + '天',
+    ];
+    if (vals[i] !== undefined) el.textContent = vals[i];
+  });
+
+  // ── Year at a Glance g-num ──
+  const gnums = document.querySelectorAll('.g-num');
+  if (gnums.length >= 3) {
+    gnums[0].textContent = s.total_cases?.toLocaleString();
+    gnums[1].textContent = c.mechanisms?.[0]?.value;
+    gnums[2].textContent = c.mechanisms?.[1]?.value;
+  }
+
+  // ── RAW 資料 → 重新渲染 bar charts ──
+  if (typeof RAW !== 'undefined' && data.map_points) {
+    // 用新資料取代全域 RAW（地圖用）
+    window._newRAW = data.map_points;
+    console.log('地圖資料已更新，共', data.map_points.length, '筆');
+  }
+
+  // ── 月份 bar ──
+  if (c.monthly && window.MONTHS) {
+    c.monthly.forEach((v, i) => { window.MONTHS[i] = v; });
+    rerenderMonthBars();
+  }
+
+  // 通知使用者
+  const notice = document.createElement('div');
+  notice.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#2e7d52;color:white;padding:12px 24px;border-radius:6px;z-index:99999;font-size:14px;font-weight:600;box-shadow:0 4px 16px rgba(0,0,0,0.2)';
+  notice.textContent = `✅ 年報已更新：${data.meta?.year} ${data.meta?.city}（${s.total_cases?.toLocaleString()} 筆資料）`;
+  document.body.appendChild(notice);
+  setTimeout(() => notice.remove(), 4000);
+
+  toggleUpload();
+}
+
+function rerenderMonthBars() {
+  const mbEl = document.getElementById('monthBars');
+  if (!mbEl || !window.MONTHS) return;
+  const MLABELS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  const mx = Math.max(...window.MONTHS);
+  mbEl.innerHTML = window.MONTHS.map((v,i) => {
+    const h = Math.round(v/mx*130);
+    return `<div class="mb-wrap"><div class="mb-bar ${v===mx?'hi':''}" style="height:${h}px"></div><div class="mb-lbl">${MLABELS[i]}</div><div class="mb-val">${v}</div></div>`;
+  }).join('');
+}
+</script>
+
 </body>
 </html>
